@@ -1,20 +1,24 @@
 const getInstalledPackages: Fig.Generator = {
-  script: "conda list",
+  script: ["conda", "list"],
   postProcess: function (out) {
     const lines = out.split("\n");
     const installedPackages = [];
-    for (let i = 2; i < lines.length; i++) {
-      installedPackages.push({
-        name: lines[i],
-        icon: "🐍",
-      });
+    for (let i = 3; i < lines.length; i++) {
+      const line = lines[i].trim();
+      if (line) {
+        const packageName = line.split(/\s+/)[0];
+        installedPackages.push({
+          name: packageName,
+          icon: "🐍",
+        });
+      }
     }
     return installedPackages;
   },
 };
 
 // const getAllCondaPackages: Fig.Generator = {
-//   //script: "conda search -q",
+//   //script: ["conda", "search", "-q"],
 //   script: function (context) {
 //     if (context[context.length - 1] === "") return "";
 //     const searchTerm = context[context.length - 1];
@@ -35,7 +39,7 @@ const getInstalledPackages: Fig.Generator = {
 // };
 
 const getCondaEnvironments: Fig.Generator = {
-  script: "conda env list",
+  script: ["conda", "env", "list"],
   scriptTimeout: 10000,
   cache: {
     ttl: 10000,
@@ -56,7 +60,7 @@ const getCondaEnvironments: Fig.Generator = {
 };
 
 const getCondaConfigs: Fig.Generator = {
-  script: "conda config --show",
+  script: ["conda", "config", "--show"],
   postProcess: function (out) {
     const lines = out.split("\n");
     const configs: Fig.Suggestion[] = [];
@@ -128,7 +132,7 @@ const remove_options: Fig.Option[] = [
     description: "Remove features (instead of packages)",
   },
   {
-    name: "--force-remove, --force",
+    name: ["--force-remove", "--force"],
     description:
       "Forces removal of a package without removing packages that depend on it. Using this option will usually leave your environment in a broken and inconsistent state",
   },
@@ -423,11 +427,11 @@ const completionSpec: Fig.Spec = {
             "Report all output as json. Suitable for using conda programmatically",
         },
         {
-          name: "-v, --verbose",
+          name: ["-v", "--verbose"],
           description:
             "Use once for info, twice for debug, three times for trace",
         },
-        { name: "-q, --quiet", description: "Do not display progress bar" },
+        { name: ["-q", "--quiet"], description: "Do not display progress bar" },
         {
           name: "--system",
           description:
@@ -503,7 +507,7 @@ const completionSpec: Fig.Spec = {
           ],
         },
         {
-          name: "--prepend, --add",
+          name: ["--prepend", "--add"],
           description:
             "Add one configuration value to the beginning of a list key",
           args: [
@@ -587,7 +591,7 @@ const completionSpec: Fig.Spec = {
         },
         ...name_options,
         {
-          name: "-c, --channel",
+          name: ["-c", "--channel"],
           description:
             "They are given (including local directories using the 'file://' syntax or simply a path like '/home/conda/mychan' or '../mychan'). Then, the defaults or channels from .condarc are searched (unless --override-channels is given). You can use 'defaults' to get the default packages for conda. You can also use any name and the .condarc channel_alias value will be prepended. The default channel_alias is http://conda.anaconda.org/",
           args: {},
@@ -635,12 +639,12 @@ const completionSpec: Fig.Spec = {
             "Install all packages using copies instead of hard- or soft-linking",
         },
         {
-          name: "-C, --use-index-cache",
+          name: ["-C", "--use-index-cache"],
           description:
             "Use cache of channel index files, even if it has expired",
         },
         {
-          name: "-k, --insecure",
+          name: ["-k", "--insecure"],
           description:
             "Allow conda to perform insecure SSL connections and transfers. Equivalent to setting 'ssl_verify' to 'false'",
         },
@@ -649,7 +653,7 @@ const completionSpec: Fig.Spec = {
           description: "Offline mode. Don't connect to the Internet",
         },
         {
-          name: "-d, --dry-run",
+          name: ["-d", "--dry-run"],
           description: "Only display what would have been done",
         },
         {
@@ -657,14 +661,14 @@ const completionSpec: Fig.Spec = {
           description:
             "Report all output as json. Suitable for using conda programmatically",
         },
-        { name: "-q, --quiet", description: "Do not display progress bar" },
+        { name: ["-q", "--quiet"], description: "Do not display progress bar" },
         {
-          name: "-v, --verbose",
+          name: ["-v", "--verbose"],
           description:
             "Can be used multiple times. Once for INFO, twice for DEBUG, three times for TRACE",
           isRepeatable: true,
         },
-        { name: "-y, --yes", description: "Do not ask for confirmation" },
+        { name: ["-y", "--yes"], description: "Do not ask for confirmation" },
         {
           name: "--download-only",
           description:
@@ -751,7 +755,7 @@ const completionSpec: Fig.Spec = {
         },
         ...name_options,
         {
-          name: "-c, --channel",
+          name: ["-c", "--channel"],
           description:
             "They are given (including local directories using the 'file://' syntax or simply a path like '/home/conda/mychan' or '../mychan'). Then, the defaults or channels from .condarc are searched (unless --override-channels is given). You can use 'defaults' to get the default packages for conda. You can also use any name and the .condarc channel_alias value will be prepended. The default channel_alias is http://conda.anaconda.org/",
           args: {},
@@ -1228,7 +1232,20 @@ const completionSpec: Fig.Spec = {
       name: "env",
       description: "",
       args: {},
-      subcommands: [{ name: "list" }],
+      subcommands: [
+        { name: "list" },
+        {
+          name: "remove",
+          options: [
+            {
+              name: "-n",
+              args: {
+                name: "environment variable",
+              },
+            },
+          ],
+        },
+      ],
     },
     {
       name: "index",

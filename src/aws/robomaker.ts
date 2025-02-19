@@ -5,7 +5,8 @@ const completionSpec: Fig.Spec = {
   subcommands: [
     {
       name: "batch-delete-worlds",
-      description: "Deletes one or more worlds in a batch operation",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Deletes one or more worlds in a batch operation",
       options: [
         {
           name: "--worlds",
@@ -36,7 +37,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "batch-describe-simulation-job",
-      description: "Describes one or more simulation jobs",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Describes one or more simulation jobs",
       options: [
         {
           name: "--jobs",
@@ -67,7 +69,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "cancel-deployment-job",
-      description: "Cancels the specified deployment job",
+      description:
+        "This API is no longer supported. For more information, see the May 2, 2022 update in the Support policy page.  Cancels the specified deployment job",
       options: [
         {
           name: "--job",
@@ -97,7 +100,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "cancel-simulation-job",
-      description: "Cancels the specified simulation job",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Cancels the specified simulation job",
       options: [
         {
           name: "--job",
@@ -128,7 +132,7 @@ const completionSpec: Fig.Spec = {
     {
       name: "cancel-simulation-job-batch",
       description:
-        "Cancels a simulation job batch. When you cancel a simulation job batch, you are also cancelling all of the active simulation jobs created as part of the batch",
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Cancels a simulation job batch. When you cancel a simulation job batch, you are also cancelling all of the active simulation jobs created as part of the batch",
       options: [
         {
           name: "--batch",
@@ -158,7 +162,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "cancel-world-export-job",
-      description: "Cancels the specified export job",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Cancels the specified export job",
       options: [
         {
           name: "--job",
@@ -189,7 +194,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "cancel-world-generation-job",
-      description: "Cancels the specified world generator job",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Cancels the specified world generator job",
       options: [
         {
           name: "--job",
@@ -221,7 +227,7 @@ const completionSpec: Fig.Spec = {
     {
       name: "create-deployment-job",
       description:
-        "Deploys a specific version of a robot application to robots in a fleet. The robot application must have a numbered applicationVersion for consistency reasons. To create a new version, use CreateRobotApplicationVersion or see Creating a Robot Application Version.   After 90 days, deployment jobs expire and will be deleted. They will no longer be accessible",
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.    This API is no longer supported and will throw an error if used. For more information, see the January 31, 2022 update in the Support policy page.  Deploys a specific version of a robot application to robots in a fleet. The robot application must have a numbered applicationVersion for consistency reasons. To create a new version, use CreateRobotApplicationVersion or see Creating a Robot Application Version.   After 90 days, deployment jobs expire and will be deleted. They will no longer be accessible",
       options: [
         {
           name: "--deployment-config",
@@ -282,7 +288,7 @@ const completionSpec: Fig.Spec = {
     {
       name: "create-fleet",
       description:
-        "Creates a fleet, a logical group of robots running the same robot application",
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.    This API is no longer supported and will throw an error if used. For more information, see the January 31, 2022 update in the Support policy page.  Creates a fleet, a logical group of robots running the same robot application",
       options: [
         {
           name: "--name",
@@ -320,7 +326,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "create-robot",
-      description: "Creates a robot",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.    This API is no longer supported and will throw an error if used. For more information, see the January 31, 2022 update in the Support policy page.  Creates a robot",
       options: [
         {
           name: "--name",
@@ -372,7 +379,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "create-robot-application",
-      description: "Creates a robot application",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Creates a robot application",
       options: [
         {
           name: "--name",
@@ -390,8 +398,7 @@ const completionSpec: Fig.Spec = {
         },
         {
           name: "--robot-software-suite",
-          description:
-            "The robot software suite (ROS distribution) used by the robot application",
+          description: "The robot software suite used by the robot application",
           args: {
             name: "structure",
           },
@@ -402,6 +409,14 @@ const completionSpec: Fig.Spec = {
             "A map that contains tag keys and tag values that are attached to the robot application",
           args: {
             name: "map",
+          },
+        },
+        {
+          name: "--environment",
+          description:
+            "The object that contains that URI of the Docker image that you use for your robot application",
+          args: {
+            name: "structure",
           },
         },
         {
@@ -425,7 +440,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "create-robot-application-version",
-      description: "Creates a version of a robot application",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Creates a version of a robot application",
       options: [
         {
           name: "--application",
@@ -438,6 +454,22 @@ const completionSpec: Fig.Spec = {
           name: "--current-revision-id",
           description:
             "The current revision id for the robot application. If you provide a value and it matches the latest revision ID, a new version will be created",
+          args: {
+            name: "string",
+          },
+        },
+        {
+          name: "--s3-etags",
+          description:
+            "The Amazon S3 identifier for the zip file bundle that you use for your robot application",
+          args: {
+            name: "list",
+          },
+        },
+        {
+          name: "--image-digest",
+          description:
+            "A SHA256 identifier for the Docker image that you use for your robot application",
           args: {
             name: "string",
           },
@@ -463,7 +495,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "create-simulation-application",
-      description: "Creates a simulation application",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Creates a simulation application",
       options: [
         {
           name: "--name",
@@ -490,7 +523,7 @@ const completionSpec: Fig.Spec = {
         {
           name: "--robot-software-suite",
           description:
-            "The robot software suite (ROS distribution) used by the simulation application",
+            "The robot software suite used by the simulation application",
           args: {
             name: "structure",
           },
@@ -508,6 +541,14 @@ const completionSpec: Fig.Spec = {
             "A map that contains tag keys and tag values that are attached to the simulation application",
           args: {
             name: "map",
+          },
+        },
+        {
+          name: "--environment",
+          description:
+            "The object that contains the Docker image URI used to create your simulation application",
+          args: {
+            name: "structure",
           },
         },
         {
@@ -532,7 +573,7 @@ const completionSpec: Fig.Spec = {
     {
       name: "create-simulation-application-version",
       description:
-        "Creates a simulation application with a specific revision id",
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Creates a simulation application with a specific revision id",
       options: [
         {
           name: "--application",
@@ -546,6 +587,22 @@ const completionSpec: Fig.Spec = {
           name: "--current-revision-id",
           description:
             "The current revision id for the simulation application. If you provide a value and it matches the latest revision ID, a new version will be created",
+          args: {
+            name: "string",
+          },
+        },
+        {
+          name: "--s3-etags",
+          description:
+            "The Amazon S3 eTag identifier for the zip file bundle that you use to create the simulation application",
+          args: {
+            name: "list",
+          },
+        },
+        {
+          name: "--image-digest",
+          description:
+            "The SHA256 digest used to identify the Docker image URI used to created the simulation application",
           args: {
             name: "string",
           },
@@ -572,7 +629,7 @@ const completionSpec: Fig.Spec = {
     {
       name: "create-simulation-job",
       description:
-        "Creates a simulation job.  After 90 days, simulation jobs expire and will be deleted. They will no longer be accessible",
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Creates a simulation job.  After 90 days, simulation jobs expire and will be deleted. They will no longer be accessible",
       options: [
         {
           name: "--client-request-token",
@@ -616,7 +673,7 @@ const completionSpec: Fig.Spec = {
         {
           name: "--failure-behavior",
           description:
-            "The failure behavior the simulation job.  Continue  Restart the simulation job in the same host instance.  Fail  Stop the simulation job and terminate the instance",
+            "The failure behavior the simulation job.  Continue  Leaves the instance running for its maximum timeout duration after a 4XX error code.  Fail  Stop the simulation job and terminate the instance",
           args: {
             name: "string",
           },
@@ -688,7 +745,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "create-world-export-job",
-      description: "Creates a world export job",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Creates a world export job",
       options: [
         {
           name: "--client-request-token",
@@ -750,7 +808,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "create-world-generation-job",
-      description: "Creates worlds using the specified template",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Creates worlds using the specified template",
       options: [
         {
           name: "--client-request-token",
@@ -812,7 +871,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "create-world-template",
-      description: "Creates a world template",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Creates a world template",
       options: [
         {
           name: "--client-request-token",
@@ -872,7 +932,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "delete-fleet",
-      description: "Deletes a fleet",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.    This API is no longer supported. For more information, see the May 2, 2022 update in the Support policy page.  Deletes a fleet",
       options: [
         {
           name: "--fleet",
@@ -902,7 +963,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "delete-robot",
-      description: "Deletes a robot",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.    This API is no longer supported. For more information, see the May 2, 2022 update in the Support policy page.  Deletes a robot",
       options: [
         {
           name: "--robot",
@@ -932,7 +994,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "delete-robot-application",
-      description: "Deletes a robot application",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Deletes a robot application",
       options: [
         {
           name: "--application",
@@ -970,7 +1033,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "delete-simulation-application",
-      description: "Deletes a simulation application",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Deletes a simulation application",
       options: [
         {
           name: "--application",
@@ -1008,7 +1072,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "delete-world-template",
-      description: "Deletes a world template",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Deletes a world template",
       options: [
         {
           name: "--template",
@@ -1039,7 +1104,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "deregister-robot",
-      description: "Deregisters a robot",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.    This API is no longer supported. For more information, see the May 2, 2022 update in the Support policy page.  Deregisters a robot",
       options: [
         {
           name: "--fleet",
@@ -1076,7 +1142,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "describe-deployment-job",
-      description: "Describes a deployment job",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.    This API is no longer supported. For more information, see the May 2, 2022 update in the Support policy page.  Describes a deployment job",
       options: [
         {
           name: "--job",
@@ -1106,7 +1173,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "describe-fleet",
-      description: "Describes a fleet",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.    This API is no longer supported. For more information, see the May 2, 2022 update in the Support policy page.  Describes a fleet",
       options: [
         {
           name: "--fleet",
@@ -1136,7 +1204,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "describe-robot",
-      description: "Describes a robot",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.    This API is no longer supported. For more information, see the May 2, 2022 update in the Support policy page.  Describes a robot",
       options: [
         {
           name: "--robot",
@@ -1167,7 +1236,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "describe-robot-application",
-      description: "Describes a robot application",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Describes a robot application",
       options: [
         {
           name: "--application",
@@ -1205,7 +1275,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "describe-simulation-application",
-      description: "Describes a simulation application",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Describes a simulation application",
       options: [
         {
           name: "--application",
@@ -1243,7 +1314,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "describe-simulation-job",
-      description: "Describes a simulation job",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Describes a simulation job",
       options: [
         {
           name: "--job",
@@ -1274,7 +1346,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "describe-simulation-job-batch",
-      description: "Describes a simulation job batch",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Describes a simulation job batch",
       options: [
         {
           name: "--batch",
@@ -1304,7 +1377,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "describe-world",
-      description: "Describes a world",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Describes a world",
       options: [
         {
           name: "--world",
@@ -1335,7 +1409,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "describe-world-export-job",
-      description: "Describes a world export job",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Describes a world export job",
       options: [
         {
           name: "--job",
@@ -1366,7 +1441,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "describe-world-generation-job",
-      description: "Describes a world generation job",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Describes a world generation job",
       options: [
         {
           name: "--job",
@@ -1397,7 +1473,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "describe-world-template",
-      description: "Describes a world template",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Describes a world template",
       options: [
         {
           name: "--template",
@@ -1428,7 +1505,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "get-world-template-body",
-      description: "Gets the world template body",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Gets the world template body",
       options: [
         {
           name: "--template",
@@ -1467,7 +1545,7 @@ const completionSpec: Fig.Spec = {
     {
       name: "list-deployment-jobs",
       description:
-        "Returns a list of deployment jobs for a fleet. You can optionally provide filters to retrieve specific deployment jobs",
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.    This API is no longer supported. For more information, see the May 2, 2022 update in the Support policy page.   Returns a list of deployment jobs for a fleet. You can optionally provide filters to retrieve specific deployment jobs",
       options: [
         {
           name: "--filters",
@@ -1539,7 +1617,7 @@ const completionSpec: Fig.Spec = {
     {
       name: "list-fleets",
       description:
-        "Returns a list of fleets. You can optionally provide filters to retrieve specific fleets",
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.    This API is no longer supported. For more information, see the May 2, 2022 update in the Support policy page.   Returns a list of fleets. You can optionally provide filters to retrieve specific fleets",
       options: [
         {
           name: "--next-token",
@@ -1611,7 +1689,7 @@ const completionSpec: Fig.Spec = {
     {
       name: "list-robot-applications",
       description:
-        "Returns a list of robot application. You can optionally provide filters to retrieve specific robot applications",
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Returns a list of robot application. You can optionally provide filters to retrieve specific robot applications",
       options: [
         {
           name: "--version-qualifier",
@@ -1690,7 +1768,7 @@ const completionSpec: Fig.Spec = {
     {
       name: "list-robots",
       description:
-        "Returns a list of robots. You can optionally provide filters to retrieve specific robots",
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.    This API is no longer supported. For more information, see the May 2, 2022 update in the Support policy page.   Returns a list of robots. You can optionally provide filters to retrieve specific robots",
       options: [
         {
           name: "--next-token",
@@ -1762,7 +1840,7 @@ const completionSpec: Fig.Spec = {
     {
       name: "list-simulation-applications",
       description:
-        "Returns a list of simulation applications. You can optionally provide filters to retrieve specific simulation applications",
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Returns a list of simulation applications. You can optionally provide filters to retrieve specific simulation applications",
       options: [
         {
           name: "--version-qualifier",
@@ -1841,7 +1919,7 @@ const completionSpec: Fig.Spec = {
     {
       name: "list-simulation-job-batches",
       description:
-        "Returns a list simulation job batches. You can optionally provide filters to retrieve specific simulation batch jobs",
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Returns a list simulation job batches. You can optionally provide filters to retrieve specific simulation batch jobs",
       options: [
         {
           name: "--next-token",
@@ -1912,7 +1990,7 @@ const completionSpec: Fig.Spec = {
     {
       name: "list-simulation-jobs",
       description:
-        "Returns a list of simulation jobs. You can optionally provide filters to retrieve specific simulation jobs",
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Returns a list of simulation jobs. You can optionally provide filters to retrieve specific simulation jobs",
       options: [
         {
           name: "--next-token",
@@ -1983,7 +2061,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "list-tags-for-resource",
-      description: "Lists all tags on a AWS RoboMaker resource",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Lists all tags on a AWS RoboMaker resource",
       options: [
         {
           name: "--resource-arn",
@@ -2014,7 +2093,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "list-world-export-jobs",
-      description: "Lists world export jobs",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Lists world export jobs",
       options: [
         {
           name: "--next-token",
@@ -2085,7 +2165,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "list-world-generation-jobs",
-      description: "Lists world generator jobs",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Lists world generator jobs",
       options: [
         {
           name: "--next-token",
@@ -2156,7 +2237,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "list-world-templates",
-      description: "Lists world templates",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Lists world templates",
       options: [
         {
           name: "--next-token",
@@ -2219,7 +2301,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "list-worlds",
-      description: "Lists worlds",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Lists worlds",
       options: [
         {
           name: "--next-token",
@@ -2289,7 +2372,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "register-robot",
-      description: "Registers a robot with a fleet",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Registers a robot with a fleet.  This API is no longer supported and will throw an error if used. For more information, see the January 31, 2022 update in the Support policy page",
       options: [
         {
           name: "--fleet",
@@ -2326,7 +2410,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "restart-simulation-job",
-      description: "Restarts a running simulation job",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Restarts a running simulation job",
       options: [
         {
           name: "--job",
@@ -2357,7 +2442,7 @@ const completionSpec: Fig.Spec = {
     {
       name: "start-simulation-job-batch",
       description:
-        "Starts a new simulation job batch. The batch is defined using one or more SimulationJobRequest objects",
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Starts a new simulation job batch. The batch is defined using one or more SimulationJobRequest objects",
       options: [
         {
           name: "--client-request-token",
@@ -2412,7 +2497,7 @@ const completionSpec: Fig.Spec = {
     {
       name: "sync-deployment-job",
       description:
-        "Syncrhonizes robots in a fleet to the latest deployment. This is helpful if robots were added after a deployment",
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.    This API is no longer supported. For more information, see the May 2, 2022 update in the Support policy page.   Syncrhonizes robots in a fleet to the latest deployment. This is helpful if robots were added after a deployment",
       options: [
         {
           name: "--client-request-token",
@@ -2451,7 +2536,7 @@ const completionSpec: Fig.Spec = {
     {
       name: "tag-resource",
       description:
-        "Adds or edits tags for a AWS RoboMaker resource. Each tag consists of a tag key and a tag value. Tag keys and tag values are both required, but tag values can be empty strings.  For information about the rules that apply to tag keys and tag values, see User-Defined Tag Restrictions in the AWS Billing and Cost Management User Guide",
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Adds or edits tags for a AWS RoboMaker resource. Each tag consists of a tag key and a tag value. Tag keys and tag values are both required, but tag values can be empty strings.  For information about the rules that apply to tag keys and tag values, see User-Defined Tag Restrictions in the AWS Billing and Cost Management User Guide",
       options: [
         {
           name: "--resource-arn",
@@ -2491,7 +2576,7 @@ const completionSpec: Fig.Spec = {
     {
       name: "untag-resource",
       description:
-        "Removes the specified tags from the specified AWS RoboMaker resource. To remove a tag, specify the tag key. To change the tag value of an existing tag key, use  TagResource",
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Removes the specified tags from the specified AWS RoboMaker resource. To remove a tag, specify the tag key. To change the tag value of an existing tag key, use  TagResource",
       options: [
         {
           name: "--resource-arn",
@@ -2530,7 +2615,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "update-robot-application",
-      description: "Updates a robot application",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Updates a robot application",
       options: [
         {
           name: "--application",
@@ -2548,8 +2634,7 @@ const completionSpec: Fig.Spec = {
         },
         {
           name: "--robot-software-suite",
-          description:
-            "The robot software suite (ROS distribution) used by the robot application",
+          description: "The robot software suite used by the robot application",
           args: {
             name: "structure",
           },
@@ -2559,6 +2644,14 @@ const completionSpec: Fig.Spec = {
           description: "The revision id for the robot application",
           args: {
             name: "string",
+          },
+        },
+        {
+          name: "--environment",
+          description:
+            "The object that contains the Docker image URI for your robot application",
+          args: {
+            name: "structure",
           },
         },
         {
@@ -2582,7 +2675,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "update-simulation-application",
-      description: "Updates a simulation application",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Updates a simulation application",
       options: [
         {
           name: "--application",
@@ -2609,8 +2703,7 @@ const completionSpec: Fig.Spec = {
         },
         {
           name: "--robot-software-suite",
-          description:
-            "Information about the robot software suite (ROS distribution)",
+          description: "Information about the robot software suite",
           args: {
             name: "structure",
           },
@@ -2627,6 +2720,14 @@ const completionSpec: Fig.Spec = {
           description: "The revision id for the robot application",
           args: {
             name: "string",
+          },
+        },
+        {
+          name: "--environment",
+          description:
+            "The object that contains the Docker image URI for your simulation application",
+          args: {
+            name: "structure",
           },
         },
         {
@@ -2650,7 +2751,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "update-world-template",
-      description: "Updates a world template",
+      description:
+        "End of support notice: On September 10, 2025, Amazon Web Services will discontinue support for Amazon Web Services RoboMaker. After September 10, 2025, you will no longer be able to access the Amazon Web Services RoboMaker console or Amazon Web Services RoboMaker resources. For more information on transitioning to Batch to help run containerized simulations, visit https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/.   Updates a world template",
       options: [
         {
           name: "--template",
@@ -2702,5 +2804,4 @@ const completionSpec: Fig.Spec = {
     },
   ],
 };
-
 export default completionSpec;

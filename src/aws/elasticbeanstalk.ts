@@ -6,7 +6,6 @@ const attributes: string[] = [
   "RefreshedAt",
   "All",
 ];
-
 const postPrecessGenerator = (
   out: string,
   parentKey: string,
@@ -14,7 +13,6 @@ const postPrecessGenerator = (
 ): Fig.Suggestion[] => {
   try {
     const list = JSON.parse(out)[parentKey];
-
     if (!Array.isArray(list)) {
       return [
         {
@@ -23,7 +21,6 @@ const postPrecessGenerator = (
         },
       ];
     }
-
     return list.map((resource) => {
       const name = (childKey ? resource[childKey] : resource) as string;
       return {
@@ -36,30 +33,29 @@ const postPrecessGenerator = (
   }
   return [];
 };
-
 const customGenerator = async (
   tokens: string[],
-  executeShellCommand: Fig.ExecuteShellCommandFunction,
-  command: string,
+  executeShellCommand: Fig.ExecuteCommandFunction,
+  command: string[],
   options: string[],
   parentKey: string,
   childKey = ""
 ): Promise<Fig.Suggestion[]> => {
   try {
-    let cmd = `aws elasticbeanstalk ${command}`;
-    for (let i = 0; i < options.length; i++) {
-      const option = options[i];
+    let args = ["elasticbeanstalk", ...command];
+    for (const option of options) {
       const idx = tokens.indexOf(option);
       if (idx < 0) {
         continue;
       }
       const param = tokens[idx + 1];
-      cmd += ` ${option} ${param}`;
+      args = [...args, option, param];
     }
-
-    const out = await executeShellCommand(cmd);
-
-    const list = JSON.parse(out)[parentKey];
+    const { stdout } = await executeShellCommand({
+      command: "aws",
+      args,
+    });
+    const list = JSON.parse(stdout)[parentKey];
     if (!Array.isArray(list)) {
       return [
         {
@@ -68,7 +64,6 @@ const customGenerator = async (
         },
       ];
     }
-
     return list.map((resource) => {
       const name = (childKey ? resource[childKey] : resource) as string;
       return {
@@ -81,10 +76,9 @@ const customGenerator = async (
   }
   return [];
 };
-
 const filterManagedAction = async (
   tokens: string[],
-  executeShellCommand: Fig.ExecuteShellCommandFunction,
+  executeShellCommand: Fig.ExecuteCommandFunction,
   command: string,
   options: string[],
   parentKey: string,
@@ -94,27 +88,22 @@ const filterManagedAction = async (
   return customGenerator(
     tokens,
     executeShellCommand,
-    `${command} --status ${filter}`,
+    [command, "--status", filter],
     options,
     parentKey,
     childKey
   );
 };
-
 const _prefixFile = "file://";
-
-const appendFolderPath = (tokens: string[], prefix: string): string => {
-  const baseLSCommand = "\\ls -1ApL ";
+const appendFolderPath = (tokens: string[], prefix: string): string[] => {
+  const baseLsCommand = ["ls", "-1ApL"];
   let whatHasUserTyped = tokens[tokens.length - 1];
-
   if (!whatHasUserTyped.startsWith(prefix)) {
-    return `echo '${prefix}'`;
+    return ["echo", prefix];
   }
   whatHasUserTyped = whatHasUserTyped.slice(prefix.length);
-
   let folderPath = "";
   const lastSlashIndex = whatHasUserTyped.lastIndexOf("/");
-
   if (lastSlashIndex > -1) {
     if (whatHasUserTyped.startsWith("/") && lastSlashIndex === 0) {
       folderPath = "/";
@@ -122,10 +111,8 @@ const appendFolderPath = (tokens: string[], prefix: string): string => {
       folderPath = whatHasUserTyped.slice(0, lastSlashIndex + 1);
     }
   }
-
-  return baseLSCommand + folderPath;
+  return [...baseLsCommand, folderPath];
 };
-
 const postProcessFiles = (out: string, prefix: string): Fig.Suggestion[] => {
   if (out.trim() === prefix) {
     return [
@@ -138,31 +125,25 @@ const postProcessFiles = (out: string, prefix: string): Fig.Suggestion[] => {
   const sortFnStrings = (a, b) => {
     return a.localeCompare(b);
   };
-
   const alphabeticalSortFilesAndFolders = (arr) => {
     const dotsArr = [];
     const otherArr = [];
-
     arr.map((fsObject) => {
       if (fsObject.toLowerCase() == ".ds_store") return;
       if (fsObject.slice(0, 1) === ".") dotsArr.push(fsObject);
       else otherArr.push(fsObject);
     });
-
     return [
       ...otherArr.sort(sortFnStrings),
       "../",
       ...dotsArr.sort(sortFnStrings),
     ];
   };
-
   const tempArr = alphabeticalSortFilesAndFolders(out.split("\n"));
-
   const finalArr = [];
   tempArr.forEach((item) => {
     if (!(item === "" || item === null || item === undefined)) {
       const outputType = item.slice(-1) === "/" ? "folder" : "file";
-
       finalArr.push({
         type: outputType,
         name: item,
@@ -170,10 +151,8 @@ const postProcessFiles = (out: string, prefix: string): Fig.Suggestion[] => {
       });
     }
   });
-
   return finalArr;
 };
-
 const triggerPrefix = (
   newToken: string,
   oldToken: string,
@@ -181,18 +160,14 @@ const triggerPrefix = (
 ): boolean => {
   if (!newToken.startsWith(prefix)) {
     if (!oldToken) return false;
-
     return oldToken.startsWith(prefix);
   }
-
   return newToken.lastIndexOf("/") !== oldToken.lastIndexOf("/");
 };
-
 const filterWithPrefix = (token: string, prefix: string): string => {
   if (!token.startsWith(prefix)) return token;
   return token.slice(token.lastIndexOf("/") + 1);
 };
-
 const generators: Record<string, Fig.Generator> = {
   listFiles: {
     script: (tokens) => {
@@ -201,30 +176,25 @@ const generators: Record<string, Fig.Generator> = {
     postProcess: (out) => {
       return postProcessFiles(out, _prefixFile);
     },
-
     trigger: (newToken, oldToken) => {
       return triggerPrefix(newToken, oldToken, _prefixFile);
     },
-
     getQueryTerm: (token) => {
       return filterWithPrefix(token, _prefixFile);
     },
   },
-
   listEnvironmentIds: {
-    script: "aws elasticbeanstalk describe-environments",
+    script: ["aws", "elasticbeanstalk", "describe-environments"],
     postProcess: (out) => {
       return postPrecessGenerator(out, "Environments", "EnvironmentId");
     },
   },
-
   listEnvironmentNames: {
-    script: "aws elasticbeanstalk describe-environments",
+    script: ["aws", "elasticbeanstalk", "describe-environments"],
     postProcess: (out) => {
       return postPrecessGenerator(out, "Environments", "EnvironmentName");
     },
   },
-
   listManagedActionsWithFilter: {
     custom: async function (tokens, executeShellCommand) {
       return filterManagedAction(
@@ -238,16 +208,14 @@ const generators: Record<string, Fig.Generator> = {
       );
     },
   },
-
   listIamRoleArns: {
-    script: "aws iam list-roles",
+    script: ["aws", "iam", "list-roles"],
     postProcess: (out) => {
       return postPrecessGenerator(out, "Roles", "Arn");
     },
   },
-
   listCnamePrefixes: {
-    script: "aws elasticbeanstalk describe-environments",
+    script: ["aws", "elasticbeanstalk", "describe-environments"],
     postProcess: (out) => {
       return postPrecessGenerator(out, "Environments", "CNAME").map((cname) => {
         try {
@@ -265,29 +233,26 @@ const generators: Record<string, Fig.Generator> = {
       });
     },
   },
-
   listApplications: {
-    script: "aws elasticbeanstalk describe-applications",
+    script: ["aws", "elasticbeanstalk", "describe-applications"],
     postProcess: (out) => {
       return postPrecessGenerator(out, "Applications", "ApplicationName");
     },
   },
-
   listApplicationVersionLabels: {
     custom: async function (tokens, executeShellCommand) {
       return customGenerator(
         tokens,
         executeShellCommand,
-        "describe-application-versions",
+        ["describe-application-versions"],
         ["--application-name"],
         "ApplicationVersions",
         "VersionLabel"
       );
     },
   },
-
   listBuckets: {
-    script: "aws s3 ls --page-size 1000",
+    script: ["aws", "s3", "ls", "--page-size", "1000"],
     postProcess: (out) => {
       try {
         return out.split("\n").map((line) => {
@@ -296,7 +261,6 @@ const generators: Record<string, Fig.Generator> = {
           if (!parts.length) {
             return [];
           }
-
           return {
             name: parts[parts.length - 1],
             insertValue: `S3Bucket=${parts[parts.length - 1]},S3Key=`,
@@ -308,36 +272,31 @@ const generators: Record<string, Fig.Generator> = {
       return [];
     },
   },
-
   listSolutionStacks: {
-    script: "aws elasticbeanstalk list-available-solution-stacks",
+    script: ["aws", "elasticbeanstalk", "list-available-solution-stacks"],
     postProcess: (out) => {
       return postPrecessGenerator(out, "SolutionStacks");
     },
   },
-
   listPlatformArns: {
-    script: "aws elasticbeanstalk list-platform-versions",
+    script: ["aws", "elasticbeanstalk", "list-platform-versions"],
     postProcess: (out) => {
       return postPrecessGenerator(out, "PlatformSummaryList", "PlatformArn");
     },
   },
-
   listApplicationArns: {
-    script: "aws elasticbeanstalk describe-applications",
+    script: ["aws", "elasticbeanstalk", "describe-applications"],
     postProcess: (out) => {
       return postPrecessGenerator(out, "Applications", "ApplicationArn");
     },
   },
-
   listEnvironmentArns: {
-    script: "aws elasticbeanstalk describe-environments",
+    script: ["aws", "elasticbeanstalk", "describe-environments"],
     postProcess: (out) => {
       return postPrecessGenerator(out, "Environments", "EnvironmentArn");
     },
   },
 };
-
 const completionSpec: Fig.Spec = {
   name: "elasticbeanstalk",
   description:
@@ -597,7 +556,6 @@ const completionSpec: Fig.Spec = {
           args: {
             name: "list",
             isVariadic: true,
-            description: "Key=string,Value=string",
           },
         },
         {
@@ -655,8 +613,6 @@ const completionSpec: Fig.Spec = {
             "Specify a commit in an AWS CodeCommit Git repository to use as the source code for the application version",
           args: {
             name: "structure",
-            description:
-              "SourceType=string,SourceRepository=string,SourceLocation=string",
           },
         },
         {
@@ -673,8 +629,6 @@ const completionSpec: Fig.Spec = {
           description: "Settings for an AWS CodeBuild build",
           args: {
             name: "structure",
-            description:
-              "ArtifactName=string,CodeBuildServiceRole=string,ComputeType=string,Image=string,TimeoutInMinutes=integer",
           },
         },
         {
@@ -704,7 +658,6 @@ const completionSpec: Fig.Spec = {
           args: {
             name: "list",
             isVariadic: true,
-            description: "Key=string,Value=string",
           },
         },
         {
@@ -773,7 +726,6 @@ const completionSpec: Fig.Spec = {
             "An Elastic Beanstalk configuration template to base this one on. If specified, Elastic Beanstalk uses the configuration values from the specified configuration template to create a new configuration. Values specified in OptionSettings override any values obtained from the SourceConfiguration. You must specify SourceConfiguration if you don't specify PlatformArn, EnvironmentId, or SolutionStackName. Constraint: If both solution stack name and source configuration are specified, the solution stack of the source configuration template must match the specified solution stack name",
           args: {
             name: "structure",
-            description: "ApplicationName=string,TemplateName=string",
           },
         },
         {
@@ -799,8 +751,6 @@ const completionSpec: Fig.Spec = {
           args: {
             name: "list",
             isVariadic: true,
-            description:
-              "ResourceName=string,Namespace=string,OptionName=string,Value=string",
           },
         },
         {
@@ -810,7 +760,6 @@ const completionSpec: Fig.Spec = {
           args: {
             name: "list",
             isVariadic: true,
-            description: "Key=string,Value=string",
           },
         },
         {
@@ -885,7 +834,6 @@ const completionSpec: Fig.Spec = {
             "Specifies the tier to use in creating this environment. The environment tier that you choose determines whether Elastic Beanstalk provisions resources to support a web application that handles HTTP(S) requests or a web application that handles background-processing tasks",
           args: {
             name: "structure",
-            description: "Name=string,Type=string,Version=string",
           },
         },
         {
@@ -895,7 +843,6 @@ const completionSpec: Fig.Spec = {
           args: {
             name: "list",
             isVariadic: true,
-            description: "Key=string,Value=string",
           },
         },
         {
@@ -940,8 +887,6 @@ const completionSpec: Fig.Spec = {
           args: {
             name: "list",
             isVariadic: true,
-            description:
-              "ResourceName=string,Namespace=string,OptionName=string,Value=string",
           },
         },
         {
@@ -951,8 +896,6 @@ const completionSpec: Fig.Spec = {
           args: {
             name: "list",
             isVariadic: true,
-            description:
-              "ResourceName=string,Namespace=string,OptionName=string",
           },
         },
         {
@@ -1027,8 +970,6 @@ const completionSpec: Fig.Spec = {
           args: {
             name: "list",
             isVariadic: true,
-            description:
-              "ResourceName=string,Namespace=string,OptionName=string,Value=string",
           },
         },
         {
@@ -1038,7 +979,6 @@ const completionSpec: Fig.Spec = {
           args: {
             name: "list",
             isVariadic: true,
-            description: "Key=string,Value=string",
           },
         },
         {
@@ -1494,8 +1434,6 @@ const completionSpec: Fig.Spec = {
           args: {
             name: "list",
             isVariadic: true,
-            description:
-              "ResourceName=string,Namespace=string,OptionName=string",
           },
         },
         {
@@ -2230,8 +2168,6 @@ const completionSpec: Fig.Spec = {
           args: {
             name: "list",
             isVariadic: true,
-            description:
-              "Attribute=string,Operator=string,Values=string,string",
           },
         },
         {
@@ -2351,7 +2287,7 @@ const completionSpec: Fig.Spec = {
         {
           name: "--resource-arn",
           description:
-            "The Amazon Resource Name (ARN) of the resource for which a tag list is requested. Must be the ARN of an Elastic Beanstalk resource",
+            "The Amazon Resource Name (ARN) of the resouce for which a tag list is requested. Must be the ARN of an Elastic Beanstalk resource",
           args: {
             name: "string",
             generators: [
@@ -2858,8 +2794,6 @@ const completionSpec: Fig.Spec = {
           args: {
             name: "list",
             isVariadic: true,
-            description:
-              "ResourceName=string,Namespace=string,OptionName=string,Value=string",
           },
         },
         {
@@ -2869,8 +2803,6 @@ const completionSpec: Fig.Spec = {
           args: {
             name: "list",
             isVariadic: true,
-            description:
-              "ResourceName=string,Namespace=string,OptionName=string",
           },
         },
         {
@@ -2947,7 +2879,6 @@ const completionSpec: Fig.Spec = {
             "This specifies the tier to use to update the environment. Condition: At this time, if you change the tier version, name, or type, AWS Elastic Beanstalk returns InvalidParameterValue error",
           args: {
             name: "structure",
-            description: "Name=string,Type=string,Version=string",
           },
         },
         {
@@ -2991,8 +2922,6 @@ const completionSpec: Fig.Spec = {
           args: {
             name: "list",
             isVariadic: true,
-            description:
-              "ResourceName=string,Namespace=string,OptionName=string,Value=string",
           },
         },
         {
@@ -3002,8 +2931,6 @@ const completionSpec: Fig.Spec = {
           args: {
             name: "list",
             isVariadic: true,
-            description:
-              "ResourceName=string,Namespace=string,OptionName=string",
           },
         },
         {
@@ -3034,7 +2961,7 @@ const completionSpec: Fig.Spec = {
         {
           name: "--resource-arn",
           description:
-            "The Amazon Resource Name (ARN) of the resource to be updated. Must be the ARN of an Elastic Beanstalk resource",
+            "The Amazon Resource Name (ARN) of the resouce to be updated. Must be the ARN of an Elastic Beanstalk resource",
           args: {
             name: "string",
             generators: [
@@ -3050,7 +2977,6 @@ const completionSpec: Fig.Spec = {
           args: {
             name: "list",
             isVariadic: true,
-            description: "Key=string,Value=string",
           },
         },
         {
@@ -3060,7 +2986,6 @@ const completionSpec: Fig.Spec = {
           args: {
             name: "list",
             isVariadic: true,
-            description: "Key=string,Value=string",
           },
         },
         {
@@ -3120,8 +3045,6 @@ const completionSpec: Fig.Spec = {
           args: {
             name: "list",
             isVariadic: true,
-            description:
-              "ResourceName=string,Namespace=string,OptionName=string,Value=string",
           },
         },
         {
@@ -3516,5 +3439,4 @@ const completionSpec: Fig.Spec = {
     },
   ],
 };
-
 export default completionSpec;

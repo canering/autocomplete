@@ -1,11 +1,12 @@
 const completionSpec: Fig.Spec = {
   name: "elastic-inference",
-  description: "Elastic Inference public APIs",
+  description:
+    "Amazon Elastic Inference is no longer available.   Elastic Inference public APIs",
   subcommands: [
     {
       name: "describe-accelerator-offerings",
       description:
-        "Describes the locations in which a given accelerator type or set of types is present in a given region",
+        "Amazon Elastic Inference is no longer available.   Describes the locations in which a given accelerator type or set of types is present in a given region",
       options: [
         {
           name: "--location-type",
@@ -44,7 +45,7 @@ const completionSpec: Fig.Spec = {
     {
       name: "describe-accelerator-types",
       description:
-        "Describes the accelerator types available in a given region, as well as their characteristics, such as memory and throughput",
+        "Amazon Elastic Inference is no longer available.   Describes the accelerator types available in a given region, as well as their characteristics, such as memory and throughput",
       options: [
         {
           name: "--cli-input-json",
@@ -68,7 +69,7 @@ const completionSpec: Fig.Spec = {
     {
       name: "describe-accelerators",
       description:
-        "Describes information over a provided set of accelerators belonging to an account",
+        "Amazon Elastic Inference is no longer available.   Describes information over a provided set of accelerators belonging to an account",
       options: [
         {
           name: "--accelerator-ids",
@@ -146,7 +147,8 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "list-tags-for-resource",
-      description: "Returns all tags of an Elastic Inference Accelerator",
+      description:
+        "Amazon Elastic Inference is no longer available.   Returns all tags of an Elastic Inference Accelerator",
       options: [
         {
           name: "--resource-arn",
@@ -178,7 +180,7 @@ const completionSpec: Fig.Spec = {
     {
       name: "tag-resource",
       description:
-        "Adds the specified tags to an Elastic Inference Accelerator",
+        "Amazon Elastic Inference is no longer available.   Adds the specified tags to an Elastic Inference Accelerator",
       options: [
         {
           name: "--resource-arn",
@@ -216,7 +218,7 @@ const completionSpec: Fig.Spec = {
     {
       name: "untag-resource",
       description:
-        "Removes the specified tags from an Elastic Inference Accelerator",
+        "Amazon Elastic Inference is no longer available.   Removes the specified tags from an Elastic Inference Accelerator",
       options: [
         {
           name: "--resource-arn",
@@ -254,5 +256,4 @@ const completionSpec: Fig.Spec = {
     },
   ],
 };
-
 export default completionSpec;

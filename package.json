@@ -1,19 +1,31 @@
 {
   "name": "@withfig/autocomplete",
-  "version": "2.475.0",
+  "version": "2.691.2",
   "description": "Fig Autocomplete Specs",
   "schemaVersion": "v7",
   "main": "./build/index",
   "types": "./build/index.d.ts",
+  "exports": {
+    ".": "./build/index.js",
+    "./dynamic": "./build/dynamic/index.js"
+  },
   "type": "module",
+  "packageManager": "pnpm@9.1.0+sha256.22e36fba7f4880ecf749a5ca128b8435da085ecd49575e7fb9e64d6bf4fad394",
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=9"
+  },
   "browserslist": [
-    "safari >=11",
-    "edge >=79"
+    "safari >= 15",
+    "last 2 chrome versions",
+    "last 2 edge versions",
+    "last 2 firefox versions",
+    "maintained node versions"
   ],
   "scripts": {
     "dev": "npx @withfig/autocomplete-tools dev",
     "create-spec": "npx @withfig/autocomplete-tools create-spec",
-    "build": "npx @withfig/autocomplete-tools compile; node generate-index.js",
+    "build": "npx @withfig/autocomplete-tools compile",
     "lint": "eslint '**/*.ts' && npx prettier --check '**/*.ts' --parser typescript",
     "lint:fix": "eslint '**/*.ts' --fix && npx prettier --write '**/*.ts' --parser typescript",
     "test": "tsc --noEmit && echo 'All specs passed validation. You are ready to push!'",
@@ -50,45 +62,40 @@
   },
   "lint-staged": {
     "*.ts": [
-      "eslint --fix",
-      "pretty-quick --staged"
+      "eslint --fix"
     ]
   },
   "files": [
-    "build/**/*.js"
+    "build/**/*.js",
+    "build/**/*.css",
+    "build/**/*.json",
+    "build/**/*.d.ts",
+    "icons/*.png",
+    "icons/*.svg"
   ],
   "author": "",
   "license": "ISC",
   "bugs": "https://github.com/withfig/autocomplete/issues",
   "repository": "https://github.com/withfig/autocomplete",
   "devDependencies": {
-    "@fig/eslint-config-autocomplete": "^1.1.0",
-    "@types/inquirer": "^9.0.2",
-    "@types/node": "^18.11.0",
-    "@types/progress": "^2.0.3",
-    "@typescript-eslint/eslint-plugin": "^5.17.0",
-    "@withfig/autocomplete-tools": "^2.7.1",
-    "@withfig/autocomplete-types": "^1.20.0",
-    "chalk": "^5.1.2",
-    "chokidar": "^3.5.1",
-    "danger": "^10.6.4",
-    "esbuild": "^0.15.10",
-    "eslint": "^8.12.0",
-    "husky": "^8.0.1",
-    "lint-staged": "^13.0.3",
-    "prettier": "^2.6.2",
-    "pretty-quick": "^3.1.3",
-    "progress": "^2.0.3",
-    "ts-node": "^10.9.1",
-    "typescript": "^4.5.5"
+    "@fig/eslint-config-autocomplete": "^2.0.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "@withfig/autocomplete-tools": "^2.11.0",
+    "@withfig/autocomplete-types": "^1.31.0",
+    "danger": "^11.3.1",
+    "eslint": "^8.57.1",
+    "eslint-plugin-compat": "4.2.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.3.0",
+    "prettier": "^3.4.2",
+    "typescript": "~5.5.4"
   },
   "dependencies": {
-    "@fig/autocomplete-generators": "^1.3.0",
-    "@fig/autocomplete-helpers": "^1.0.4",
-    "@types/glob": "^8.0.0",
-    "fs": "^0.0.1-security",
-    "strip-json-comments": "^5.0.0",
-    "yaml": "^2.1.3",
-    "semver": "^7.3.7"
+    "@fig/autocomplete-generators": "^2.4.0",
+    "@fig/autocomplete-helpers": "^1.0.7",
+    "semver": "^7.6.3",
+    "strip-json-comments": "^5.0.1",
+    "yaml": "^2.7.0"
   }
 }
