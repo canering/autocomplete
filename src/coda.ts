@@ -1,14 +1,18 @@
 import { filepaths } from "@fig/autocomplete-generators";
 
 const formulaNames: Fig.Generator = {
-  script: `grep -A5 --include=\*.ts --exclude-dir=node_modules -r 'addFormula\\|addSyncTable\\|makeFormula\\|makeSyncTable' . | grep -A3 -i formula | grep name: | grep -oE "['\\"]\\w*['\\"]"`,
+  script: [
+    "bash",
+    "-c",
+    `grep -A5 --include=\*.ts --exclude-dir=node_modules -r 'addFormula\\|addSyncTable\\|makeFormula\\|makeSyncTable' . | grep -A3 -i formula | grep name: | grep -oE "['\\"]\\w*['\\"]"`,
+  ],
   postProcess: (output) => {
     if (output.trim().length === 0) {
       return [];
     }
     return output.split("\n").map((formulaName) => {
       return {
-        name: formulaName.replaceAll(/['"]/g, "").trim(),
+        name: formulaName.replace(/['"]/g, "").trim(),
         description: `Execute ${formulaName}`,
       };
     });

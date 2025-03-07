@@ -391,7 +391,7 @@ const completionSpec: Fig.Spec = {
       options: [
         {
           name: "--progress-update-stream",
-          description: "The name of the ProgressUpdateStream. &gt;",
+          description: "The name of the ProgressUpdateStream. >",
           args: {
             name: "string",
           },
@@ -982,5 +982,4 @@ const completionSpec: Fig.Spec = {
     },
   ],
 };
-
 export default completionSpec;

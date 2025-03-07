@@ -1,16 +1,16 @@
 const environmentVariableGenerator: Fig.Generator = {
-  script: "env",
-  postProcess: (out) =>
-    out.length === 0
-      ? []
-      : out
-          .split("\n")
-          .map((env) => env.split("=")[0])
-          .map((suggestion) => ({
-            name: `$${suggestion}`,
-            type: "arg",
-            description: "Environment Variable",
-          })),
+  custom: async (tokens, _, context) => {
+    if (tokens.length < 3 || tokens[tokens.length - 1].startsWith("$")) {
+      return Object.keys(context.environmentVariables).map((suggestion) => ({
+        name: `$${suggestion}`,
+        type: "arg",
+        description: "Environment Variable",
+      }));
+    } else {
+      return [];
+    }
+  },
+  trigger: "$",
 };
 
 const completionSpec: Fig.Spec = {
@@ -20,6 +20,7 @@ const completionSpec: Fig.Spec = {
     name: "string",
     isVariadic: true,
     optionsCanBreakVariadicArg: false,
+    suggestCurrentToken: true,
     generators: environmentVariableGenerator,
   },
   options: [

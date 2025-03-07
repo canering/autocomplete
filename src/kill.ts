@@ -15,7 +15,7 @@ const completionSpec: Fig.Spec = {
     name: "pid",
     isVariadic: true,
     generators: {
-      script: "ps axo pid,comm | sed 1d",
+      script: ["bash", "-c", "ps axo pid,comm | sed 1d"],
       postProcess: (result: string) => {
         return result.split("\n").map((line) => {
           const [pid, path] = line.trim().split(/\s+/);
@@ -38,9 +38,9 @@ const completionSpec: Fig.Spec = {
         name: "signal_name",
         generators: {
           // Bash's `kill` builtin has different output to /bin/kill
-          script: "env kill -l",
+          script: ["env", "kill", "-l"],
           postProcess: (out) =>
-            out.match(/\w+/g).map((name) => ({
+            out.match(/\w+/g)?.map((name) => ({
               name,
               description: `Send ${name} instead of TERM`,
               icon: "fig://icon?type=string",
